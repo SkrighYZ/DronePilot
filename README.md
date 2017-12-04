@@ -1,2 +1,2 @@
 # DronePilot
-Small Drone Pilot game.
+Small Drone Pilot game project.
