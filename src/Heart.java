@@ -2,20 +2,33 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Class that draws the lives.
+ */
 public class Heart extends JPanel{
 
-	protected int lives = 3;
-	protected int x = 20;
-	protected int y = 20;
-	protected boolean dead = false;
+	protected int lives;
+	protected int x;
+	protected int y;
+	protected boolean dead;
 	
+	/**
+	 * Constructor.
+	 * Sets original lives to 3 and dead to false;
+	 */
 	public Heart() {
-		
+		lives = 3;
+		x = 20;
+		y = 20;
+		dead = false;
 	}
 	
+	/**
+	 * Draws the hearts.
+	 * @param g Graphics object.
+	 */
 	public void draw(Graphics g) {
 		BufferedImage heart = loadImage("/heart.png");
 		if(lives == 1) {
@@ -37,6 +50,11 @@ public class Heart extends JPanel{
 		}
 	}
 
+	/**
+	 * Loads image from res folder.
+	 * @param FileName.
+	 * @return BufferedImage.
+	 */
 	BufferedImage loadImage(String FileName) {
 		BufferedImage img = null;
 		
