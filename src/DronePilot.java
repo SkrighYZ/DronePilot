@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * This class is the main game class that draws every JPanel objects in it.
+ */
 public class DronePilot extends JPanel implements KeyListener{
 	
 	protected Rocket rc;
@@ -17,19 +20,25 @@ public class DronePilot extends JPanel implements KeyListener{
 	protected Spike sp;
 	protected Spike2 sp2;
 	protected Text t;
-	protected int count1, count2, count3;
-	protected boolean stopUp, stopDown, stopLeft, stopRight;
+	protected int count1, count2, count3;	// Count the number of the rocket flashing after being hurt	
+	protected boolean stopUp, stopDown, stopLeft, stopRight;	// Keep track of whether the rocket touches the wall
 	protected boolean touchedSp, touchedSp2, touchedWater;
 	protected Timer timerRc, timerFl, timerSp, timerSp2, timerT;
 	protected boolean finished;
-	protected static double TIME_DELAY_RC = 0.05;
+	protected static double TIME_DELAY_RC = 0.05;  		// in seconds
 	protected static double TIME_DELAY_FL = 0.3;
 	protected static double TIME_DELAY_SP = 0.01;
 	
+	/**
+	 * Constructor.
+	 */
 	public DronePilot() {
 		start();
 	}
 	
+	/**
+	 * Gives all instances initial values.
+	 */
 	public void start() {
 		rc =  new Rocket(30, 500, TIME_DELAY_RC);
 		add(rc);
@@ -67,6 +76,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * ActionListener class for the rocket timer.
+	 */
 	protected class TimerCallbackRc implements ActionListener {
 
 		@Override
@@ -116,6 +128,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * ActionListener class for the fuel timer.
+	 */
 	protected class TimerCallbackFl implements ActionListener {
 
 		@Override
@@ -126,6 +141,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * ActionListener class for the first spike timer.
+	 */
 	protected class TimerCallbackSp implements ActionListener {
 
 		@Override
@@ -142,6 +160,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * ActionListener class for the second spike timer.
+	 */
 	protected class TimerCallbackSp2 implements ActionListener {
 
 		@Override
@@ -158,6 +179,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * ActionListener class for the text timer.
+	 */
 	protected class TimerCallbackT implements ActionListener {
 
 		@Override
@@ -172,6 +196,11 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * Paints everything.
+	 * Keeps track of whether the trap is triggered and whether one round is finished.
+	 * @param g The Graphics object.
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		rc.draw(g);
@@ -188,6 +217,12 @@ public class DronePilot extends JPanel implements KeyListener{
 		}
 	}
 
+	/**
+	 * Overrides keyPressed method of KeyListener interface.
+	 * Runs the keyPressed method of the rocket class and detects direction buttons to control the rocket.
+	 * Restart the  game if user pressed space after one round.
+	 * @param KeyEvent object .
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		rc.keyPressed(e);
@@ -197,17 +232,29 @@ public class DronePilot extends JPanel implements KeyListener{
 		}
 	}
 
+	/**
+	 * Overrides keyReleased method of KeyListener interface.
+	 * Runs the keyPressed method of the rocket class.
+	 * @param KeyEvent object .
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		rc.keyReleased(e);
 		
 	}
 
+	/**
+	 * Overrides keyTyped method of KeyListener interface.
+	 * @param KeyEvent object .
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		
 	}
 	
+	/**
+	 * Decides whether each trap is triggered and starts/stops the corresponding timer.
+	 */
 	public void trapTriggered() {
 		if(rc.y <= 350 && rc.x < 400) {
 			timerSp.start();
@@ -216,7 +263,7 @@ public class DronePilot extends JPanel implements KeyListener{
 			timerSp.stop();
 		}
 		
-		if(rc.x >= 540 && rc.x < 600 && (rc.y <= 380)) {
+		if(rc.x >= 540 && rc.x < 800 && (rc.y <= 350)) {
 			timerSp2.start();
 		}
 		if(!(sp2.go)) {
@@ -230,10 +277,13 @@ public class DronePilot extends JPanel implements KeyListener{
 		}
 	}
 	
+	/**
+	 * @return true if the rocket touches the ground.
+	 */
 	public boolean touchedDown() {
 		
 		int position = 0;
-		int x = rc.x + 90;
+		int x = rc.x + 90;	// Rocket side determination adjustments
 		int y = rc.y + 80;
 		for(int i = 0; i < bg.xPts.size() - 1; i++) {
 			if(x > bg.xPts.get(i) && x < bg.xPts.get(i + 1)) {
@@ -248,6 +298,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * @return true if the rocket touches the ceiling.
+	 */
 	public boolean touchedUp() {
 		
 		int position = 0;
@@ -266,6 +319,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * @return true if the rocket touches the right wall.
+	 */
 	public boolean touchedRight() {
 		
 		int position = 0;
@@ -286,6 +342,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * @return true if the rocket touches the left wall.
+	 */
 	public boolean touchedLeft() {
 		
 		int position = 0;
@@ -306,6 +365,16 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * Using vector method to determine whether a point is on the right side of a line.
+	 * @param x1 The x coordinate of the start point of the line.
+	 * @param y1 The y coordinate of the start point of the line.
+	 * @param x2 The x coordinate of the end point of the line.
+	 * @param y2 The y coordinate of the end point of the line.
+	 * @param x The x coordinate of the point.
+	 * @param y The y coordinate of the point.
+	 * @return true if the point is right of the line.
+	 */
 	public boolean RightOfLine(int x1, int y1, int x2, int y2, int x, int y) {
 		
 		y1 = -y1;
@@ -322,6 +391,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		
 	}
 	
+	/**
+	 * @return true if the first spike is touched by the rocket.
+	 */
 	public boolean spTouched() {
 	
 		int y = sp.upYPos + sp.height;
@@ -333,6 +405,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * @return true if the second spike is touched by the rocket.
+	 */
 	public boolean sp2Touched() {
 		
 		int x = sp2.ltXPos;
@@ -344,6 +419,9 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * @return true if water is touched by the rocket.
+	 */
 	public boolean waterTouched() {
 		
 		if(rc.x >= 480 && rc.x < 720) {
@@ -356,6 +434,11 @@ public class DronePilot extends JPanel implements KeyListener{
 		return false;
 	}
 	
+	/**
+	 * Stop all the timers except the text timer.
+	 * If all the lives are lost or rocket is running out of fuel, set boolean win to false.
+	 * Otherwise if the goal is touched by the rocket, set win to true.
+	 */
 	public void finish() {
 		if(ht.isDead() || fl.isDead()) {
 			t.win = false;
