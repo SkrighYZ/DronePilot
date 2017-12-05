@@ -2,26 +2,44 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Class that draws the second spike trap.
+ */
 public class Spike2 extends JPanel implements ActionListener {
 
-	protected int num = 16;
-	protected int length = 220;
-	protected int height = 0;
-	protected int ltXPos = 700;
-	protected int upYPos = 50;
-	protected boolean dead = false;
-	protected boolean back = false;
-	protected boolean go = true;
+	protected int num;
+	protected int length;
+	protected int height;
+	protected int ltXPos;
+	protected int upYPos;
+	protected boolean dead;
+	protected boolean back; 	// Stores whether the spikes are returning back.
+	protected boolean go;		// Controls when the spikes stop changing.
 	
 	protected static double TIME_DELAY;
 	
+	/**
+	 * Constructor.
+	 * @param TIME_DELAY in seconds.
+	 */
 	public Spike2(double TIME_DELAY) {
+		num = 16;  		// Number of spikes times 2
+		length = 220;
+		height = 0;
+		ltXPos = 700;
+		upYPos = 50;
+		dead = false;
+		back = false;
+		go = true;
 		this.TIME_DELAY = TIME_DELAY;
 	}
 
+	/**
+	 * Stretches the spikes.
+	 * @param e ActionEvent.
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -40,6 +58,10 @@ public class Spike2 extends JPanel implements ActionListener {
 		
 	}
 	
+	/**
+	 * Draws the spikes.
+	 * @param g Graphics object.
+	 */
 	public void draw(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.BLACK);
