@@ -1,8 +1,7 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Background extends JPanel{
@@ -11,8 +10,9 @@ public class Background extends JPanel{
 	protected ArrayList<Integer> yPts = new ArrayList<Integer>();
 	protected ArrayList<Integer> xPts2 = new ArrayList<Integer>();
 	protected ArrayList<Integer> yPts2 = new ArrayList<Integer>();
-	protected int[] triX = {430, 460, 445};
+	protected int[] triX = {420, 450, 435};
 	protected int[] triY = {560, 560, 600};
+	protected boolean triggered;
 	
 	public Background() {
 		xPts.add(0);
@@ -54,6 +54,8 @@ public class Background extends JPanel{
 		yPts2.add(50);
 		yPts2.add(80);
 		yPts2.add(50);
+		
+		triggered = false;
 	}
 
 	public void draw(Graphics g) {
@@ -71,10 +73,21 @@ public class Background extends JPanel{
 		g.setColor(Color.BLUE);
 		g.fillRect(480, 500, 240, 200);
 		
-		g.setColor(Color.GRAY);
-		g.fillRect(440, 500, 10, 60);
-		g.fillPolygon(triX, triY, 3);
+		if(!triggered) {
+			g.setColor(Color.GRAY);
+			g.setFont(new Font("default", Font.BOLD, 18));
+			g.drawString("THIS WAY", 380, 490);
+			g.fillRect(430, 500, 10, 60);
+			g.fillPolygon(triX, triY, 3);
+		}
+		else {
+			g.setColor(Color.GRAY);
+			g.setFont(new Font("default", Font.BOLD, 18));
+			g.drawString("GOTCHA!", 380, 490);
+		}
+		
 		
 	}
 	
 }
+
