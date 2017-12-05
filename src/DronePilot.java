@@ -216,7 +216,7 @@ public class DronePilot extends JPanel implements KeyListener{
 			timerSp.stop();
 		}
 		
-		if(rc.x >= 530 && rc.x < 600 && (rc.y <= 380)) {
+		if(rc.x >= 540 && rc.x < 600 && (rc.y <= 380)) {
 			timerSp2.start();
 		}
 		if(!(sp2.go)) {
