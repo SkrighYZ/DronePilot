@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
+/**
+ * Class that paints the background.
+ */
 public class Background extends JPanel{
 
 	protected ArrayList<Integer> xPts = new ArrayList<Integer>();
@@ -12,8 +15,11 @@ public class Background extends JPanel{
 	protected ArrayList<Integer> yPts2 = new ArrayList<Integer>();
 	protected int[] triX = {420, 450, 435};
 	protected int[] triY = {560, 560, 600};
-	protected boolean triggered;
+	protected boolean triggered;			// Stores whether the rocket has touched water.
 	
+	/**
+	 * Constructor stores all the points of ground, ceiling, and walls.
+	 */
 	public Background() {
 		xPts.add(0);
 		xPts.add(340);
@@ -58,6 +64,10 @@ public class Background extends JPanel{
 		triggered = false;
 	}
 
+	/**
+	 * Paints background, trap sign, and water.
+	 * @param g Graphics object.
+	 */
 	public void draw(Graphics g) {
 		
 		g.setColor(Color.BLACK);
@@ -80,7 +90,7 @@ public class Background extends JPanel{
 			g.fillRect(430, 500, 10, 60);
 			g.fillPolygon(triX, triY, 3);
 		}
-		else {
+		else {								// Changes misleading sign into "GOTCHA!" after rocket touches water
 			g.setColor(Color.GRAY);
 			g.setFont(new Font("default", Font.BOLD, 18));
 			g.drawString("GOTCHA!", 380, 490);
@@ -90,4 +100,3 @@ public class Background extends JPanel{
 	}
 	
 }
-
