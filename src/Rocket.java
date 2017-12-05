@@ -1,5 +1,4 @@
 
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -146,8 +145,8 @@ public class Rocket extends JPanel implements KeyListener, ActionListener{
 	}
 
 	/**
-	 * @param FileName
-	 * @return	BufferedImage read from the resource folder.
+	 * @param FileName.
+	 * @return BufferedImage read from the resource folder.
 	 */
 	BufferedImage loadImage(String FileName) {
 		BufferedImage img = null;
