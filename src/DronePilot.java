@@ -9,6 +9,7 @@ import javax.swing.Timer;
 
 /**
  * This class is the main game class that draws every JPanel objects in it.
+ * @author SkrighYZ
  */
 public class DronePilot extends JPanel implements KeyListener{
 	
