@@ -272,7 +272,7 @@ public class DronePilot extends JPanel implements KeyListener{
 		}
 		
 		if(rc.x >= 1000) {
-			gl.x = 800;
+			gl.x = 800;		// Resets the position of the goal
 			gl.y = 300;
 			repaint();
 		}
