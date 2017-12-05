@@ -5,5 +5,6 @@ Features of this game:
 - Simulates weak gravity since the background is in space.
 - Can restart every time you win or lose.
 - Rocket can't go into walls/ground/ceiling. (Will be repelled)
+
 Controls:
 - Use arrow keys to control the rocket.
