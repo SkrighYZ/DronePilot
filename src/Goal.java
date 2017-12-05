@@ -1,20 +1,29 @@
 import java.awt.Color;
 import java.awt.Graphics;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * Class that draws the goal.
+ */
 public class Goal extends JPanel{
 
 	protected int x, y;
 	
+	/**
+	 * Constructor.
+	 * @param x coordinate of the origin.
+	 * @param y coordinate of the origin.
+	 */
 	public Goal(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
 	
+	/**
+	 * Draws the goal.
+	 * @param g Graphics object.
+	 */
 	public void draw(Graphics g) {
 		
 		for(int i = 0; i < 50; i++) {
