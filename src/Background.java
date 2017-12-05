@@ -11,6 +11,8 @@ public class Background extends JPanel{
 	protected ArrayList<Integer> yPts = new ArrayList<Integer>();
 	protected ArrayList<Integer> xPts2 = new ArrayList<Integer>();
 	protected ArrayList<Integer> yPts2 = new ArrayList<Integer>();
+	protected int[] triX = {430, 460, 445};
+	protected int[] triY = {560, 560, 600};
 	
 	public Background() {
 		xPts.add(0);
@@ -68,6 +70,10 @@ public class Background extends JPanel{
 		
 		g.setColor(Color.BLUE);
 		g.fillRect(480, 500, 240, 200);
+		
+		g.setColor(Color.GRAY);
+		g.fillRect(440, 500, 10, 60);
+		g.fillPolygon(triX, triY, 3);
 		
 	}
 	
