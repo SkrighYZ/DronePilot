@@ -1,5 +1,5 @@
-# DronePilot
-Drone Pilot 2D game.
+# RocketGo
+Rocket 2D game.
 # Features
 - Rocket image changes the firing jet engine according to your control.
 - Several traps. All traps are able to avoid.
