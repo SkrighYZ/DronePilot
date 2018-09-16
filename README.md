@@ -1,5 +1,5 @@
 # RocketGo
-Rocket 2D game.
+Rocket 2D java game.
 # Features
 - Rocket image changes the firing jet engine according to your control.
 - Several traps. All traps are able to avoid.
